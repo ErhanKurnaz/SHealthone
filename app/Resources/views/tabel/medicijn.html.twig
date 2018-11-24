@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block nav %}
+    {% include "nav/bezoeker_nav.html.twig" %}
+{% endblock %}
+{% block title %}medicijn{% endblock %}
+
+{% block body %}
+    {% for msg in app.session.flashBag.get('succes') %}
+        <div class="alert alert-success">
+            {{ msg }}
+        </div>
+    {% endfor %}
+    {% for msg in app.session.flashBag.get('faal') %}
+        <div class="alert alert-success">
+            {{ msg }}
+        </div>
+    {% endfor %}
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Naam</th>
+            <th scope="col">Werking</th>
+            <th scope="col">Bijwerking</th>
+            {% if  ingelogd == "verzekeringsmedewerker" %}
+            <th scope="col"><a href={{ path('medicijn_toevoegen') }}> <button class='float-right' style='height: 35px; width: 35px;'><img src='{{ asset('images/fontawesome-free-5.4.2-desktop/svgs/solid/plus.svg') }}' /></button></a></th>
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for medicijn in showMedicijn %}
+            <tr>
+                <td>{{ medicijn.naam }}</td>
+                <td>{{ medicijn.werking }}</td>
+                <td>{{ medicijn.bijwerking }}</td>
+                {% if  ingelogd == "verzekeringsmedewerker" %}
+                    <td><a href={{ path('medicijn_verwijder' , {'id' :  medicijn.id  }) }}> <button style='height: 35px; width: 35px;'><img src='{{ asset('images/fontawesome-free-5.4.2-desktop/svgs/solid/trash-alt.svg') }}'></button></a></td>
+                    <td><a href={{ path('medicijn_verander', {'id': medicijn.id}) }}> <button style='height: 35px; width: 35px;'><img src={{ asset('images/fontawesome-free-5.4.2-desktop/svgs/solid/edit.svg') }}></button></a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+{% block title %}persoon{% endblock %}
+{% block nav %}
+{% include "nav/bezoeker_nav.html.twig" %}
+{% endblock %}
+{% block body %}
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Voornaam</th>
+            <th scope="col">tussenvoegsel</th>
+            <th scope="col">Achternaam</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for arts in showArts %}
+            <tr>
+                <td>{{ arts.id }}</td>
+                <td>{{ arts.voornaam }}</td>
+                {% if arts.tussen_voegsel is defined %}
+                <td>{{ arts.tussen_voegsel }} </td>
+                {% endif %}
+                <td>{{ arts.achternaam }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

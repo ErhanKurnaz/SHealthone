@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Medicijn toevoegen</h1>
+
+                {{ form_start(medicijnForm, {'attr' : {'novalidate': 'novalidate'}}) }}
+                {{ form_widget(medicijnForm) }}
+
+                <button type="submit" class="btn btn-primary">Voeg toe</button>
+
+                {{ form_end(medicijnForm) }}
+                {% for msg in app.session.flashBag.get('faal') %}
+                    <div class="alert alert-danger">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
