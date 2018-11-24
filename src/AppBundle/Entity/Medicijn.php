@@ -105,5 +105,9 @@ class Medicijn
         $this->bijwerking = $bijwerking;
     }
 
+    public function __toString(){
+        return $this->naam;
+    }
+
 
 }

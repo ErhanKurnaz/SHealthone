@@ -69,7 +69,7 @@ class verzekeringController extends Controller
      * @Route("/vm/medicijn/update/{id}", name="medicijn_verander")
      */
     public function updateMedicijn(Request $request ,$id) {
-        if ($id == 5) {
+        if (!empty($id)) {
             $entity = $this->getDoctrine()->getRepository(Medicijn::class)->find($id);
             $medicijn= array('id' => $entity->getId(), 'naam' => $entity->getNaam(), 'werking' => $entity->getWerking(), 'bijwerking' => $entity->getBijwerking());
 
@@ -78,23 +78,13 @@ class verzekeringController extends Controller
                 'method' => 'PUT',
                 'medicijn' => $medicijn,
             ) );
-            $form->handleRequest($request);
         } else {
             $form = $this->createForm(MedicijnType::class);
-            $form->handleRequest($request);
-            $id = $form->get('id');
         }
-
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $repository=$this->getDoctrine()->getRepository(Medicijn::class);
-            $bestaande_medicijn=$repository->find($id);
-
-            $bestaande_medicijn->setNaam($form->get('naam'));
-            $bestaande_medicijn->setWerking($form->get('werking'));
-            $bestaande_medicijn->setBijwerking($form->get('bijwerking'));
-
+            $bestaande_medicijn= $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->flush();
             $this->addFlash('succes', 'Medicijn verandert!');

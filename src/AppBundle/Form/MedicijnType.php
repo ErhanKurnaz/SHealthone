@@ -35,9 +35,9 @@ class MedicijnType extends AbstractType
                        'attr' => array('cols' => '50', 'rows' => '3'),
                        'data' => $medicijn['bijwerking'],
                    ))
-               ->add('id', HiddenType::class, array(
-                   'data' => $medicijn['id'],
-               ));
+                   ->add('id', HiddenType::class, array(
+                       'data' => $medicijn['id'],
+                   ));
            } else {
            $builder
                ->add('naam', TextType::class)
@@ -54,7 +54,7 @@ class MedicijnType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => 'AppBundle\Entity\Medicijn',
-            'medicijn' => null
-        ]);
+            'medicijn' => null,
+         ]);
     }
 }
