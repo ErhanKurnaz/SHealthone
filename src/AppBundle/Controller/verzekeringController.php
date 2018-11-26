@@ -83,8 +83,6 @@ class verzekeringController extends Controller
         }
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $repository=$this->getDoctrine()->getRepository(Medicijn::class);
-            $bestaande_medicijn= $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->flush();
             $this->addFlash('succes', 'Medicijn verandert!');

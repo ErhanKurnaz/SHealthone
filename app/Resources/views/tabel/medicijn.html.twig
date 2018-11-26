@@ -34,7 +34,7 @@
                 <td>{{ medicijn.werking }}</td>
                 <td>{{ medicijn.bijwerking }}</td>
                 {% if  ingelogd == "verzekeringsmedewerker" %}
-                    <td><a href={{ path('medicijn_verwijder' , {'id' :  medicijn.id  }) }}> <button style='height: 35px; width: 35px;'><img src='{{ asset('images/fontawesome-free-5.4.2-desktop/svgs/solid/trash-alt.svg') }}'></button></a></td>
+                    <td><a href={{ path('medicijn_verwijder' , {'id' :  medicijn.id  }) }}> <button style='height: 35px; width: 35px;'><img src={{ asset('images/fontawesome-free-5.4.2-desktop/svgs/solid/trash-alt.svg') }}></button></a></td>
                     <td><a href={{ path('medicijn_verander', {'id': medicijn.id}) }}> <button style='height: 35px; width: 35px;'><img src={{ asset('images/fontawesome-free-5.4.2-desktop/svgs/solid/edit.svg') }}></button></a></td>
                 {% endif %}
             </tr>
