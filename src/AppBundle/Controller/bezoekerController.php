@@ -18,21 +18,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class bezoekerController extends Controller
 {
-//    /**
-//     * @Route("/medicijn/new")
-//     */
-//    public function newAction() {
-//        $medicijn = new Medicijn();
-//        $medicijn->setNaam('amoxicilline');
-//        $medicijn->setWerking('breedspectrum antibioticum, actief tegen grampositieve en gramnegatieve bacteriën');
-//        $medicijn->setBijwerking('braken, buikpijn, diarree, spijsverteringsstoornissen, huidirritaties, maagdarm-stoornissen');
-//
-//        $em = $this->getDoctrine()->getManager();
-//        $em->persist($medicijn);
-//        $em->flush();
-//
-//        return new Response('<html><body>tabel toegevoegd</body></html>');
-//    }
     /**
      * @Route("/medicijn", name="medicijn")
      */

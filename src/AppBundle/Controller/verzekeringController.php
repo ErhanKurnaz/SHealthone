@@ -20,9 +20,21 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class verzekeringController extends Controller
 {
     /**
-     * @Route("/vm/medicijn/", name="vm_medicijn")
+     * @Route("/vm/medicijn", name="vm_medicijn")
      */
     public function vmMedicijn(){
+        $ingelogd = "verzekeringsmedewerker";
+        $show = $this->getDoctrine()->getRepository(Medicijn::class)->findAll();
+        return $this->render("tabel/medicijn.html.twig", array(
+            "showMedicijn" => $show,
+            "ingelogd" => $ingelogd
+        ));
+
+    }
+   /**
+     * @Route("/vm", name="verzekering_home")
+     */
+    public function vm(){
         $ingelogd = "verzekeringsmedewerker";
         $show = $this->getDoctrine()->getRepository(Medicijn::class)->findAll();
         return $this->render("tabel/medicijn.html.twig", array(
