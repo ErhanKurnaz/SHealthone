@@ -31,18 +31,7 @@ class verzekeringController extends Controller
         ));
 
     }
-   /**
-     * @Route("/vm", name="verzekering_home")
-     */
-    public function vm(){
-        $ingelogd = "verzekeringsmedewerker";
-        $show = $this->getDoctrine()->getRepository(Medicijn::class)->findAll();
-        return $this->render("tabel/medicijn.html.twig", array(
-            "showMedicijn" => $show,
-            "ingelogd" => $ingelogd
-        ));
 
-    }
 
     /**
      * @Route("/vm/medicijn/new", name="medicijn_toevoegen")
@@ -120,5 +109,17 @@ class verzekeringController extends Controller
         $em->flush();
         $this->addFlash('succes', 'Medicijn verwijdert!');
         return $this->redirectToRoute("vm_medicijn");
+    }
+/**
+ * @Route("/vm", name="verzekering_home")
+ */
+    public function vm(){
+        $ingelogd = "verzekeringsmedewerker";
+        $show = $this->getDoctrine()->getRepository(Medicijn::class)->findAll();
+        return $this->render("tabel/medicijn.html.twig", array(
+            "showMedicijn" => $show,
+            "ingelogd" => $ingelogd
+        ));
+
     }
 }

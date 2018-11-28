@@ -46,7 +46,7 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
         {
             $response = new RedirectResponse($this->router->generate('verzekering_home'));
         }
-        
+
         return $response;
     }
 }
