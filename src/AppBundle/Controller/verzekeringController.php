@@ -110,16 +110,4 @@ class verzekeringController extends Controller
         $this->addFlash('succes', 'Medicijn verwijdert!');
         return $this->redirectToRoute("vm_medicijn");
     }
-/**
- * @Route("/vm", name="verzekering_home")
- */
-    public function vm(){
-        $ingelogd = "verzekeringsmedewerker";
-        $show = $this->getDoctrine()->getRepository(Medicijn::class)->findAll();
-        return $this->render("tabel/medicijn.html.twig", array(
-            "showMedicijn" => $show,
-            "ingelogd" => $ingelogd
-        ));
-
-    }
 }

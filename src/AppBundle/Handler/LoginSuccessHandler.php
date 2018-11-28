@@ -44,7 +44,7 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
     {
         if ($this->authorizationChecker->isGranted('ROLE_VERZEKERING'))
         {
-            $response = new RedirectResponse($this->router->generate('verzekering_home'));
+            $response = new RedirectResponse($this->router->generate('vm_medicijn'));
         }
 
         return $response;
