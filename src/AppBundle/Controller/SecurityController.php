@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +20,11 @@ class SecurityController extends Controller
     /**
      * @Route("/login", name="login")
      */
-    public function loginAction(Request $request, AuthenticationUtils $authenticationUtils) {
+    public function loginAction(Request $request, AuthenticationUtils $authenticationUtils, LoggerInterface $logger) {
+        $logger = $this->get('monolog.logger.inloggen');
+        $logger->info('dit is info!');
+        $logger->error('rip');
+        $logger->critical('oooooh noooooo');
         $error = $authenticationUtils->getLastAuthenticationError();
 
         $lastUsername = $authenticationUtils->getLastUsername();

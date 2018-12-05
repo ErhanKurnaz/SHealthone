@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class bezoekerController extends Controller
 {
+
     /**
      * @Route("/medicijn", name="medicijn")
      */

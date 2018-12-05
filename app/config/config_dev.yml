@@ -12,7 +12,13 @@ web_profiler:
     intercept_redirects: false
 
 monolog:
+    channels: [inloggen]
     handlers:
+        security:
+            level:      debug
+            type:       stream
+            path:       '%kernel.logs_dir%/security.log'
+            channels:   [security]
         main:
             type: stream
             path: '%kernel.logs_dir%/%kernel.environment%.log'
