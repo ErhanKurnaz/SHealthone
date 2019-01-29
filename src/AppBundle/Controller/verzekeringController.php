@@ -29,7 +29,6 @@ class verzekeringController extends Controller
             "showMedicijn" => $show,
             "ingelogd" => $ingelogd
         ));
-
     }
 
 
